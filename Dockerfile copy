@@ -1,0 +1,24 @@
+# Use a imagem mais recente do Node.js
+FROM node:latest
+
+# Define o diretório de trabalho dentro do contêiner
+WORKDIR /app
+
+# Copia o package.json e o .env para o contêiner
+COPY package.json .
+COPY .env .
+
+# Instala as dependências usando yarn
+RUN yarn install
+
+# Copia o código-fonte
+COPY . .
+
+RUN yarn build 
+
+# Execute o script para iniciar o aplicativo no modo de produção
+
+# Expõe a porta 3000 para o acesso externo
+EXPOSE 3000
+
+CMD [ "yarn", "start" ]

@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  nest-app:
+    build: .
+    tty: true
+    environment:
+      - NODE_ENV=production
+    volumes:
+      - ./API-TODO-LIST:/app 
+    ports:
+      - "3000:3000"
